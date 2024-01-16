@@ -1,12 +1,16 @@
-\documentclass{report}
+% set document class
+\documentclass[a4paper]{report}
 
+% these are necessary for modern fonts
 \usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc} % also latin5
+\usepackage[utf8]{inputenc}
+% this is necessary for Turkish language support
 \usepackage[turkish,shorthands=:!]{babel}
+% this indents the first paragraph of each section
 \usepackage{indentfirst}
 
-%% Sets page size and margins
-\usepackage[top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+% Sets page size and margins
+\usepackage[a4paper]{geometry}
 
 %% Useful packages
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
@@ -14,16 +18,18 @@
 
 % Specify bibliography package
 \usepackage{natbib}
-% ----------------------------------------------------------------------
 
+% Specify title, author and date
 \title{Théodore Géricault'nun Medusa'nın Salı Tablosunun Müzikteki Doku Kavramı Üzerinden İncelenmesi}
 \author{Şahin Kureta - 22083802}
 \date{Müzisyenler için Terminoloji II: 2023 Güz Final Ödevi}
-% ----------------------------------------------------------------------
 
+% === DOCUMENT START ===
 \begin{document}
+% this creates the title page with title, author and date give above
 \maketitle
 
+% asterisk after section makes it unnumbered
 \section*{Giriş}
 Théodore Géricault 26 Eylül 1791 tarihinde Fransa'nın Rouen şehrinde doğmuş, 26 Ocak 1824'te Paris'te ölmüştür.
 Babası Georges-Nicolas Géricault varlıklı bir avukat ve işadamıdır.
@@ -31,6 +37,7 @@ Babası Georges-Nicolas Géricault varlıklı bir avukat ve işadamıdır.
 Daha sonra Carle Vernet ve Pierre-Narcisse Guérin ile çalışmaya devam etmiştir.
 Öğrenimine École des Beaux Arts'da devam etmiştir \citep{kronzek2023}.
 
+% we can refer to this image later with \ref{fig:medusa}
 \begin{figure}[htp]
     \centering
     \includegraphics[width=14cm]{medusa}
@@ -68,6 +75,7 @@ Resim doğası itibariyle durağan, tek bir anın temsil edildiği bir medyum ol
 Eser Fransız Romantizmi'nin simgelerinden biri haline gelmiş olsa da Caravaggio benzeri bir stilde \textit{chiaroscuro} (İtalyanca aydınlık-karanlık; kompozisyonun genelinde yüksek kontrast kullanımı) ve \textit{tenebrism} (İtalyanca tenebroso kelimesinden; karanlık, kasvetli, gizemli) kullanımı esere son derece Barok bir hava vermektedir.
 Barok dönemde polifoni sanatının zirve yaptığı ve passacaglia formunun en önemli eserlerinin de bu dönemde yazıldığı göz önüne alındığında resmin polifonik doku ve passacaglia formu ile olan ilişkisi bir kez daha desteklenmektedir.
 
+% generates bibliography using references.bib file and apalike style
 \bibliographystyle{apalike}
 \bibliography{references}
 
