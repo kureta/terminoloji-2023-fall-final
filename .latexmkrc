@@ -1,1 +1,3 @@
-$pdflatex = 'lualatex --shell-escape --synctex=1 %O %S;';
+$pdflatex = 'lualatex --shell-escape --interaction=nonstopmode %O %S;';
+$pdf_previewer = 'evince';
+$out_dir = 'build';
