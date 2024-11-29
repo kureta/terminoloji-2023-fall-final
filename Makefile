@@ -1,13 +1,12 @@
 # Variables
-TEXFILE = src/report.tex
+TEX_FILE = src/report.tex
 REF_FILE = src/bibliography/references.bib
 BUILD_DIR = build
 OUT_DIR = output
-BASEFILE = $(basename $(notdir $(TEXFILE)))
-BCFFILE = $(BUILD_DIR)/$(BASEFILE).bcf
-BBLFILE = $(BUILD_DIR)/$(BASEFILE).bbl
-PDF_OUT = $(OUT_DIR)/$(BASEFILE).pdf
-PDF_BUILT = $(BUILD_DIR)/$(BASEFILE).pdf
+BASE_NAME = $(basename $(notdir $(TEX_FILE)))
+BBLFILE = $(BUILD_DIR)/$(BASE_NAME).bbl
+PDF_OUT = $(OUT_DIR)/$(BASE_NAME).pdf
+PDF_BUILT = $(BUILD_DIR)/$(BASE_NAME).pdf
 
 # Default target
 all: $(PDF_OUT)
@@ -22,12 +21,14 @@ $(OUT_DIR):
 
 # Biber run to process the bibliography
 $(BBLFILE): $(REF_FILE) | $(BUILD_DIR)
-	lualatex -output-directory=$(BUILD_DIR) $(TEXFILE)
-	biber --input-directory $(BUILD_DIR) --output-directory $(BUILD_DIR) $(BASEFILE)
+	lualatex -output-directory=$(BUILD_DIR) $(TEX_FILE)
+	biber --input-directory $(BUILD_DIR) --output-directory $(BUILD_DIR) $(BASE_NAME)
 
 # Final lualatex runs to integrate bibliography
-$(PDF_BUILT): $(TEXFILE) $(BBLFILE)
-	lualatex -output-directory=$(BUILD_DIR) $(TEXFILE)
+$(PDF_BUILT): $(TEX_FILE) $(BBLFILE)
+	lualatex -output-directory=$(BUILD_DIR) $(TEX_FILE)
+	# First run says `Package biblatex Warning: Please rerun LaTeX.`
+	lualatex -output-directory=$(BUILD_DIR) $(TEX_FILE)
 
 $(PDF_OUT): $(PDF_BUILT) | $(OUT_DIR)
 	cp $(PDF_BUILT) $(PDF_OUT)

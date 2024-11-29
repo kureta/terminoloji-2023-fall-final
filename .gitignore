@@ -303,3 +303,4 @@ TSWLatexianTemp*
 # latex build dir, contains both temporary files and final pdf
 # if we use aux_dir instead of out_dir in latexmkrc, then lyluatex breaks
 build/
+output/
